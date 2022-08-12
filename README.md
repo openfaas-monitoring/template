@@ -1,2 +1,4 @@
 # template
 openfaas函数部署的定制化模板
+
+在template文件夹下的python3-logger模板提供日志输出和记录服务
