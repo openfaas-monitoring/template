@@ -34,9 +34,8 @@ if __name__ == "__main__":
         globalFlag.set_value(flag_tuple[0], True if flag_tuple[1] == 'True' else False)
 
     # 获取标准输入
-    # st = get_stdin()
-
-    res, args = " ", dict()
+    res = get_stdin()
+    args = dict()
 
     # 将配置以字典形式存入内存
     func_info = dict()
