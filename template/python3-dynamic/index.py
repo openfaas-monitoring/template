@@ -111,7 +111,6 @@ if __name__ == "__main__":
         args = runWithConfig(config['main'], args)
     else:
         # 多线程运行
-        thread1 = ThreadWithConfig('thread1', config['thread1'], args)
         for thread_name in extra_threads:
             exec("{} = ThreadWithConfig('{}', config['{}'], args)".format(thread_name, thread_name, thread_name))
             eval("{}.start()".format(thread_name))
