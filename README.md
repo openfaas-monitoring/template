@@ -54,7 +54,7 @@ def function2(args):
 ```json
 {
   "global": [],
-  "extra_threads": ['thread1'],
+  "extra_threads": ["thread1"],
   "thread_process": {
     "main": [
       {
