@@ -1,0 +1,35 @@
+{
+  "global": [
+    [
+      "flag1",
+      "True"
+    ]
+  ],
+  "extra_threads": [
+  ],
+  "thread_process": {
+    "main": [
+      {
+        "func_name": "function1",
+        "type": "branch",
+        "condition": "flag1",
+        "next_func_true": "function2",
+        "next_func_false": "function3"
+      },
+      {
+        "func_name": "function2",
+        "type": "order",
+        "condition": "",
+        "next_func_true": "",
+        "next_func_false": ""
+      },
+      {
+        "func_name": "function3",
+        "type": "order",
+        "condition": "",
+        "next_func_true": "",
+        "next_func_false": ""
+      }
+    ]
+  }
+}

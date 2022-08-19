@@ -1,0 +1,45 @@
+{
+  "global": [
+  ],
+  "extra_threads": [
+  ],
+  "thread_process": {
+    "main": [
+      {
+        "func_name": "function1",
+        "type": "order",
+        "condition": "",
+        "next_func_true": "function2",
+        "next_func_false": ""
+      },
+      {
+        "func_name": "function2",
+        "type": "order",
+        "condition": "",
+        "next_func_true": "function3",
+        "next_func_false": ""
+      },
+      {
+        "func_name": "function3",
+        "type": "order",
+        "condition": "",
+        "next_func_true": "function4",
+        "next_func_false": ""
+      },
+      {
+        "func_name": "function4",
+        "type": "order",
+        "condition": "",
+        "next_func_true": "function5",
+        "next_func_false": ""
+      },
+      {
+        "func_name": "function5",
+        "type": "order",
+        "condition": "",
+        "next_func_true": "",
+        "next_func_false": ""
+      }
+    ]
+  }
+}
