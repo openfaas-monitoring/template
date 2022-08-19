@@ -9,41 +9,85 @@
       "True"
     ]
   ],
-  "process": [
-    {
-      "func_name": "function1",
-      "type": "order",
-      "condition": "",
-      "next_func_true": "function2",
-      "next_func_false": ""
-    },
-    {
-      "func_name": "function2",
-      "type": "branch",
-      "condition": "flag1",
-      "next_func_true": "function3",
-      "next_func_false": "function4"
-    },
-    {
-      "func_name": "function3",
-      "type": "order",
-      "condition": "",
-      "next_func_true": "",
-      "next_func_false": ""
-    },
-    {
-      "func_name": "function4",
-      "type": "loop",
-      "condition": "flag2",
-      "next_func_true": "function4",
-      "next_func_false": "function5"
-    },
-    {
-      "func_name": "function5",
-      "type": "order",
-      "condition": "",
-      "next_func_true": "",
-      "next_func_false": ""
-    }
-  ]
+  "extra_threads": [
+    "thread1",
+    "thread2",
+    "thread3"
+  ],
+  "thread_process": {
+    "main": [
+      {
+        "func_name": "join",
+        "type": "order",
+        "wait_threads": [
+          "thread2",
+          "thread3"
+        ],
+        "condition": "",
+        "next_func_true": "function4",
+        "next_func_false": ""
+      },
+      {
+        "func_name": "function4",
+        "type": "order",
+        "condition": "",
+        "next_func_true": "",
+        "next_func_false": ""
+      }
+    ],
+    "thread1": [
+      {
+        "func_name": "function1",
+        "type": "order",
+        "condition": "",
+        "next_func_true": "",
+        "next_func_false": ""
+      }
+    ],
+    "thread2": [
+      {
+        "func_name": "join",
+        "type": "order",
+        "wait_threads": [
+          "thread1"
+        ],
+        "condition": "",
+        "next_func_true": "function2",
+        "next_func_false": ""
+      },
+      {
+        "func_name": "function2",
+        "type": "loop",
+        "condition": "flag1",
+        "next_func_true": "function2",
+        "next_func_false": ""
+      }
+    ],
+    "thread3": [
+      {
+        "func_name": "join",
+        "type": "branch",
+        "wait_threads": [
+          "thread1"
+        ],
+        "condition": "flag2",
+        "next_func_true": "function3",
+        "next_func_false": "function5"
+      },
+      {
+        "func_name": "function3",
+        "type": "order",
+        "condition": "",
+        "next_func_true": "",
+        "next_func_false": ""
+      },
+      {
+        "func_name": "function5",
+        "type": "order",
+        "condition": "",
+        "next_func_true": "",
+        "next_func_false": ""
+      }
+    ]
+  }
 }
