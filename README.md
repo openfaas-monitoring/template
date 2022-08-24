@@ -53,6 +53,7 @@ def function2(args):
 
 ```json
 {
+  "name": "paralleltest",
   "global": [],
   "extra_threads": ["thread1"],
   "thread_process": {
@@ -88,6 +89,7 @@ def function2(args):
   }
 }
 ```
+- `name`字段中定义在openfaas平台部署的函数名称，为一个字符串
 
 - `global`字段中定义全局布尔变量，通过一个二维列表分别定义名称和初始值
 
@@ -142,3 +144,22 @@ thread1无需等待任何线程的运行，直接运行function1
 thread2需要等待thread1的运行，然后循环运行function2
 
 thread3需要等待thread1的运行，然后分支运行function3或者function5
+
+# openfaas平台部署
+
+在openfaas平台上的部署操作如下
+
+```shell
+faas-cli new xxx --lang python3-dynamic -p yyy
+
+...修改对应文件夹中的handler.py文件和process-cfg.json配置文件
+
+faas-cli build -f ./xxx.yml
+
+docker push yyy/xxx
+
+faas-cli deploy -f xxx.yml 
+
+```
+在最后deploy阶段可以通过`-e`选项来指定环境变量，如`-e write_debug=true`,`-e read_timeout=100`,`-e write_timeout=100`等。具体环境变量可以参考openfaas中of-watchdog。
+
