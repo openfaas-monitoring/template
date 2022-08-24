@@ -2,12 +2,13 @@ import sys
 import logging
 import json
 import threading
+import os
 from function import globalFlag
 from function import handler
 
 logger = logging.getLogger("funcLogger")
 logger.setLevel(logging.INFO)
-sh = logging.StreamHandler(stream=sys.stderr)
+sh = logging.FileHandler('/home/app/log/function.log', 'w', encoding='utf-8')
 sh.setFormatter(
     logging.Formatter(fmt='%(asctime)s %(levelname)s %(threadName)s %(message)s', datefmt='%Y/%m/%d %H:%M:%S'))
 logger.addHandler(sh)
@@ -53,8 +54,10 @@ def runWithConfig(config: dict, args: dict):
             now_func_name = now_func_info['next_func_true']
         else:  # 执行当前函数
             logger.info('{} started'.format(now_func_name))
+            sys.stdout.flush()
             args = eval('handler.{}'.format(now_func_name))(args)
             logger.info('{} over'.format(now_func_name))
+            sys.stdout.flush()
 
         # 根据控制类型决定下一步执行
         step_type = now_func_info['type']
@@ -75,6 +78,7 @@ def runWithConfig(config: dict, args: dict):
 if __name__ == "__main__":
     # 运行开始
     logger.info('all started')
+    sys.stdout.flush()
 
     # 初始化全局变量
     globalFlag.init()
@@ -82,6 +86,11 @@ if __name__ == "__main__":
     # 读取配置文件
     with open('./function/process-cfg.json', 'r') as f:
         config_json = json.load(f)
+
+    # 函数名称标志
+    label_path = '/home/app/log/' + config_json['name']
+    if not os.path.exists(label_path):
+        os.makedirs(label_path)
 
     # 设置全局标志变量
     for flag_tuple in config_json['global']:
@@ -121,3 +130,4 @@ if __name__ == "__main__":
         print(args['res'])
 
     logger.info("all end")
+    logger.info("over")
