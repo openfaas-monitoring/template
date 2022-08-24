@@ -12,12 +12,12 @@ def function1(args):
 
 
 def function2(args):
-    time.sleep(1)
+    time.sleep(2)
     args['res'] = args['res'][::-1]
     return args
 
 
 def function3(args):
-    time.sleep(1)
+    time.sleep(2)
     args['res'] = str(int(args['res']) * 2)
     return args

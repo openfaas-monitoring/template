@@ -8,20 +8,20 @@ def function1(args):
 
 
 def function2(args):
-    time.sleep(1)
+    time.sleep(2)
     args['num2'] = args['num1'] + 1
 
     return args
 
 
 def function3(args):
-    time.sleep(1)
+    time.sleep(2)
     args['num3'] = args['num1'] + 2
     return args
 
 
 def function4(args):
-    time.sleep(1)
+    time.sleep(2)
     args['num4'] = args['num1'] + 3
     return args
 

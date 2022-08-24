@@ -8,7 +8,7 @@ def function1(args):
 
 
 def function2(args):
-    time.sleep(1)
+    time.sleep(2)
     args['num1'] = args['num1'] + args['num1']
     if len(args['num1']) < 10:
         globalFlag.set_value('flag1', True)

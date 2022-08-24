@@ -1,5 +1,11 @@
 from function import globalFlag
 import time
+import os
+
+func_name = 'paralleltest'
+label_path = '/home/app/log/' + func_name
+if not os.path.exists(label_path):
+    os.makedirs(label_path)
 
 
 def function1(args):
@@ -12,7 +18,7 @@ def function1(args):
 
 
 def function2(args):
-    time.sleep(1)
+    time.sleep(2)
     if 'num2' not in args.keys():
         args['num2'] = 2
     else:
