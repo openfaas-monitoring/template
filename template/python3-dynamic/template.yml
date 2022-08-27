@@ -1,5 +1,5 @@
 language: python3
-fprocess: python3 index.py
+fprocess: python3 -u index.py
 build_options:
   - name: dev
     packages: 

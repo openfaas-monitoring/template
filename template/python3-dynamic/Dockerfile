@@ -34,6 +34,10 @@ RUN touch ./function/__init__.py
 WORKDIR /home/app/function/
 COPY function/requirements.txt	.
 
+RUN mkdir -p /home/app/log
+RUN touch /home/app/log/function.log
+VOLUME /home/app/log
+
 RUN pip install -r requirements.txt --target=/home/app/python
 
 WORKDIR /home/app/
